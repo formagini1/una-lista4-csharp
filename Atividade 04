@@ -1,0 +1,230 @@
+1 - using System;
+
+class Program
+{
+    static void Main()
+    {
+        double nota;
+
+        do
+        {
+            Console.Write("Digite uma nota entre 0 e 10: ");
+            nota = Convert.ToDouble(Console.ReadLine());
+
+            if (nota < 0 || nota > 10)
+            {
+                Console.WriteLine("Valor inválido. A nota deve estar entre 0 e 10.");
+            }
+        } while (nota < 0 || nota > 10);
+
+        Console.WriteLine($"Você digitou a nota {nota}. Obrigado!");
+    }
+}
+
+2 - 
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        string nomeUsuario, senha;
+
+        do
+        {
+            Console.Write("Digite um nome de usuário: ");
+            nomeUsuario = Console.ReadLine();
+
+            Console.Write("Digite uma senha: ");
+            senha = Console.ReadLine();
+
+            if (nomeUsuario == senha)
+            {
+                Console.WriteLine("A senha não pode ser igual ao nome de usuário. Tente novamente.");
+            }
+            else
+            {
+                Console.WriteLine("Cadastro realizado com sucesso!");
+                break;
+            }
+
+        } while (true);
+    }
+}
+
+3 - 
+static bool ValidarNome(string nome)
+{
+    return nome.Length > 3;
+}
+
+static bool ValidarIdade(int idade)
+{
+    return idade >= 0 && idade <= 150;
+}
+
+static bool ValidarSalario(decimal salario)
+{
+    return salario > 0;
+}
+
+static bool ValidarSexo(char sexo)
+{
+    return sexo == 'f' || sexo == 'm';
+}
+
+static bool ValidarEstadoCivil(char estadoCivil)
+{
+    return estadoCivil == 's' || estadoCivil == 'c' || estadoCivil == 'v' || estadoCivil == 'd';
+}
+
+static void Main(string[] args)
+{
+    Console.Write("Digite seu nome: ");
+    string nome = Console.ReadLine();
+    while (!ValidarNome(nome))
+    {
+        Console.WriteLine("Nome inválido. Deve conter mais de 3 caracteres.");
+        Console.Write("Digite seu nome: ");
+        nome = Console.ReadLine();
+    }
+
+    Console.Write("Digite sua idade: ");
+    int idade;
+    while (!int.TryParse(Console.ReadLine(), out idade) || !ValidarIdade(idade))
+    {
+        Console.WriteLine("Idade inválida. Deve estar entre 0 e 150.");
+        Console.Write("Digite sua idade: ");
+    }
+
+    Console.Write("Digite seu salário: ");
+    decimal salario;
+    while (!decimal.TryParse(Console.ReadLine(), out salario) || !ValidarSalario(salario))
+    {
+        Console.WriteLine("Salário inválido. Deve ser maior que zero.");
+        Console.Write("Digite seu salário: ");
+    }
+
+    Console.Write("Digite seu sexo (f/m): ");
+    char sexo;
+    while (!char.TryParse(Console.ReadLine(), out sexo) || !ValidarSexo(sexo))
+    {
+        Console.WriteLine("Sexo inválido. Deve ser 'f' ou 'm'.");
+        Console.Write("Digite seu sexo (f/m): ");
+    }
+
+    Console.Write("Digite seu estado civil (s/c/v/d): ");
+    char estadoCivil;
+    while (!char.TryParse(Console.ReadLine(), out estadoCivil) || !ValidarEstadoCivil(estadoCivil))
+    {
+        Console.WriteLine("Estado civil inválido. Deve ser 's', 'c', 'v' ou 'd'.");
+        Console.Write("Digite seu estado civil (s/c/v/d): ");
+    }
+
+    Console.WriteLine("Informações válidas:");
+    Console.WriteLine("Nome: " + nome);
+    Console.WriteLine("Idade: " + idade);
+    Console.WriteLine("Salário: " + salario);
+    Console.WriteLine("Sexo: " + sexo);
+    Console.WriteLine("Estado Civil: " + estadoCivil);
+}
+
+4 - 
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int quantidadeNumeros = 5;
+        int soma = 0;
+
+        for (int i = 1; i <= quantidadeNumeros; i++)
+        {
+            Console.Write($"Digite o {i}º número: ");
+            int numero = Convert.ToInt32(Console.ReadLine());
+            soma += numero;
+        }
+
+        double media = (double)soma / quantidadeNumeros;
+
+        Console.WriteLine($"Soma dos números: {soma}");
+        Console.WriteLine($"Média dos números: {media}");
+    }
+}
+
+5 - 
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Números ímpares entre 1 e 50:");
+
+        for (int i = 1; i <= 50; i++)
+        {
+            if (i % 2 != 0)
+            {
+                Console.WriteLine(i);
+            }
+        }
+    }
+}
+
+6 - 
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Digite um inteiro: ");
+        int numero1 = int.Parse(Console.ReadLine());
+
+        Console.Write("Digite outro número inteiro: ");
+        int numero2 = int.Parse(Console.ReadLine());
+
+        // Verifica qual é o menor e o maior número
+        int inicio = Math.Min(numero1, numero2);
+        int fim = Math.Max(numero1, numero2);
+
+        Console.WriteLine($"Números no intervalo entre {inicio} e {fim}:");
+        for (int i = inicio; i <= fim; i++)
+        {
+            Console.Write(i + " ");
+        }
+
+        Console.WriteLine(); // Pula uma linha no final
+    }
+}
+
+7 - 
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int numerosPares = 0;
+        int numerosImpares = 0;
+
+        for (int i = 1; i <= 10; i++)
+        {
+            Console.Write($"Digite o {i}º número inteiro: ");
+            int numero = Convert.ToInt32(Console.ReadLine());
+
+            if (numero % 2 == 0)
+            {
+                numerosPares++;
+            }
+            else
+            {
+                numerosImpares++;
+            }
+        }
+
+        Console.WriteLine($"Quantidade de números pares: {numerosPares}");
+        Console.WriteLine($"Quantidade de números ímpares: {numerosImpares}");
+    }
+}
